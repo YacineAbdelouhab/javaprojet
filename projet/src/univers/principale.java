@@ -15,7 +15,7 @@ public class principale {
             
             Un_aliment pate=new Un_aliment(NomObjet.PATE,0,1,3,0);
             pate.setQuantite(3);
-            System.out.println(pate.getquantite());
+            System.out.println(pate.getQuantite());
             System.out.println(NomObjet.PATE.getNom());
             nourriture.getQuantites();
 
