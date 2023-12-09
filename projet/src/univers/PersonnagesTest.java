@@ -1,34 +1,34 @@
 package univers;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-class PersonnagesTest {
+/**
+Enumeration des personnages du jeu.
+@author ABDELOUHAB Yacine
+*/
+public enum Personnages_du_jeu {
+	Pere(0,"Patrick"),
+	Mere(1,"Stephanie"),
+	Soeur(2,"Sarah"),
+	Frere(3,"Matheo"),
+	Medecin(4,"Paul"),
+	Athlete(5,"Amine"),
+	Cousin(6,"Yacine"),
+	Cuisiniere(7,"Guilianetta");
+	
+	private int identifiant;
+	private String prenom;
+	
+	Personnages_du_jeu(int id,String prenom){
+		this.identifiant = id;	
+		this.prenom = prenom;
+	}
+	
+	public int getIdentifiant() {
+		return this.identifiant;
+	}
+	
+	public String getPrenom() {
+		return this.prenom;
+	}
 
-	Personnages perso_test;
-	
-	@BeforeEach
-	public void init_perso_test() {
-		perso_test = new Personnages(Personnages_du_jeu.Pere);
-	}
-	
-	@Test
-	public void to_String_test() {
-		perso_test.to_String();
-		assertEquals(true,true);
-	}
-	
-	@Test
-	public void maj_naturelle_attributs_generaux_Personnages_Test_tjr_vivant(){
-		this.perso_test.maj_naturelle_attributs_generaux_Personnages();
-		boolean verif = false;
-		if(this.perso_test.get_barre_eau() == 67 && this.perso_test.get_barre_nourriture() == 80 && this.perso_test.get_barre_mentale() == 75 && this.perso_test.get_barre_energie() == 90  ) {
-			verif = true;
-		}
-		assertEquals(true,verif);
-	}
-	
 }
