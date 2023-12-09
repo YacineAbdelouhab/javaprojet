@@ -274,7 +274,7 @@ public class Personnages{
     	  this.etat_global = Etat_Personnages.Mort;
       }
       
-      if( !(this.barre_sante <= this.etat_global.getBorne_Sup() || this.barre_sante >= this.etat_global.getBorne_Inf()  ) ) {
+      if( !(this.barre_sante <= this.etat_global.getBorne_Sup() && this.barre_sante >= this.etat_global.getBorne_Inf()  ) ) {
     	  if(this.barre_sante >= 80 && this.barre_sante <= 100 ){
     		  this.etat_global = Etat_Personnages.Vigoureux;
     	  }
@@ -300,6 +300,8 @@ public class Personnages{
       Autre contexte ?
     */
     public void maj_contextuelle_attributs_generaux_Personnages(int eau,int nourriture,int mentale,int energie){
+      
+    	
       this.barre_eau = this.barre_eau + eau;
       this.barre_nourriture = this.barre_nourriture + nourriture;
       this.barre_mentale = this.barre_mentale + mentale;
@@ -311,11 +313,42 @@ public class Personnages{
     /**MAJ permettant de modifie les attributs specifique d'un personnage.
     */
     public void maj_contextuelle_attributs_specifique_Personnages(int force,int conso_nourriture,int intelligence,int resistance,int agilite){
-      this.force = force;
-      this.conso_nourriture = conso_nourriture;
-      this.intelligence = intelligence;
-      this.resistance = resistance;
-      this.agilite = agilite;
+      
+      if(force < 0) {
+    	  this.force = 0;
+      }
+      else {
+    	  this.force = force;
+      }
+      
+      if(conso_nourriture < 0) {
+    	  this.conso_nourriture = 0;
+      }
+      else {
+    	  this.conso_nourriture = conso_nourriture;
+      }
+      
+      if(intelligence < 0) {
+    	  this.intelligence = 0;
+      }
+      else {
+    	  this.intelligence = intelligence;
+      }
+      
+      if(resistance < 0) {
+    	  this.resistance = 0;
+      }
+      else {
+    	  this.resistance = resistance;
+      }
+ 
+      if(agilite < 0) {
+    	  this.agilite = 0;
+      }
+      else {
+    	  this.agilite = agilite;
+      }
+
     }
 
 
@@ -357,7 +390,7 @@ public class Personnages{
         
         
        
-        if( !(this.barre_mentale <= this.etat_mentale.getBorne_Sup() || this.barre_mentale >= this.etat_mentale.getBorne_Inf()  ) ) {
+        if( !(this.barre_mentale <= this.etat_mentale.getBorne_Sup() && this.barre_mentale >= this.etat_mentale.getBorne_Inf()  ) ) {
         	  if(this.barre_mentale >= 50 && this.barre_mentale <= 100 ){
         		  this.etat_mentale = Etat_Personnages.Heureux;
         		  this.fin_consequence_depression();
@@ -461,4 +494,7 @@ public class Personnages{
       this.en_expedition = false;
     }
 
+    public void set_temps_malade_virus(int n) {
+    	this.temps_malade_virus = n;
+    }
 }
